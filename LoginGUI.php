@@ -51,9 +51,6 @@
             <h2 class="form-signin-heading">Staff login</h2>
             <input type="text" class="input-block-level" placeholder="Email address">
             <input type="password" class="input-block-level" placeholder="Password">
-            <label class="checkbox">
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
           <button class="btn btn-large btn-primary" type="submit">Sign in</button>
           <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
         </form>
