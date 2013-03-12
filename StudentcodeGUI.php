@@ -6,7 +6,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Staff login &middot; QuizzIt</title>
+        <title>Student code entry &middot; QuizzIt</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -48,12 +48,8 @@
     <body>
         <div class="container">
           <form class="form-signin">
-            <h2 class="form-signin-heading">Staff login</h2>
-            <input type="text" class="input-block-level" placeholder="Email address">
-            <input type="password" class="input-block-level" placeholder="Password">
-            <label class="checkbox">
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+            <h2 class="form-signin-heading">Student code entry</h2>
+            <input type="text" class="input-block-level" placeholder="Given quiz code">
           <button class="btn btn-large btn-primary" type="submit">Sign in</button>
           <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
         </form>
