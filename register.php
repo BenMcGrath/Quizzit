@@ -7,6 +7,7 @@
 session_start();
 ?>
 
+<html>
 <head>
 	<title>The Common Room.</title>
 	<!-- This links the CSS file which i have created to the webpage. -->
@@ -40,13 +41,11 @@ session_start();
 		
 			/* Here I declare the text boxes in my forms so that i am able to use them later on
 			in my php which will make it easier when inputting data into my MySQL tables. */
+            $Tutor_ID = $_POST['tutor_ID'];
 			$submit = $_POST['submit'];
 			$firstname = $_POST['firstname'];
 			$lastname = $_POST['lastname'];
 			$email = $_POST['email'];
-			$placeofstudy = $_POST['placeofstudy'];
-			$age = $_POST['age'];
-			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$repeatpassword = $_POST['repeatpassword'];
 			
@@ -56,7 +55,7 @@ session_start();
 			{
 				
 				/* If all fields have been filled in within the form the code below will execute. */
-				if ($firstname&&$lastname&&$email&&$placeofstudy&&$age&&$username&&$password&&$repeatpassword)
+				if ($Tutor_ID&&$firstname&&$lastname&&$email&&$password&&$repeatpassword)
 					{
 						?>
 						
@@ -64,19 +63,16 @@ session_start();
 										<br> <br> <h1>Registration.</h1>
 						<br>
 						<form action="register.php" method='POST'>
-						<table> 
-						<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
-						<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
-						<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
-						<tr><td>Place of Study: </td><td><input type="text" name="placeofstudy" value="<?php echo$placeofstudy;?>"></td></tr>
-						<tr><td>Age: </td><td><input type="text" name="age" value="<?php echo$age;?>"></td></tr>
-						<tr><td>UserName: </td><td><input type="text" name="username" value="<?php echo$username;?>"></td></tr>
-						<br>
-						<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
-						<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
-						</table>
-						<p><INPUT type="submit" name='submit' value="Register">
-						</p>
+						    <table>
+                                <tr><td>User Name: </td><td><input type="text" name="UserName" value="<?php echo$Tutor_ID;?>"></td></tr>
+						        <tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
+						        <tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
+						        <tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
+						        <tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
+						        <tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
+						    </table>
+						    <p><INPUT type="submit" name='submit' value="Register">
+						    </p>
 						</form>
 						<!--This will out put a confirmation message -->
 						<?php
@@ -89,7 +85,7 @@ session_start();
 						/*This will insert what the user has put in the form into the "users" table*/
 						$query = mysql_query
 						("
-						INSERT INTO users VALUES ('','$username','$password','$email','$firstname','$lastname','$age','$placeofstudy')
+						INSERT INTO users VALUES ('$Tutor_ID','$firstname','$password','$email','$lastname')
 						");
 						
 						/*Once the information has been written to the table you will then be taken 
@@ -107,19 +103,16 @@ session_start();
 									<br> <br> <h1>Registration.</h1>
 						<br>
 						<form action="register.php" method='POST'>
-						<table> 
-						<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
-						<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
-						<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
-						<tr><td>Place of Study: </td><td><input type="text" name="placeofstudy" value="<?php echo$placeofstudy;?>"></td></tr>
-						<tr><td>Age: </td><td><input type="text" name="age" value="<?php echo$age;?>"></td></tr>
-						<tr><td>UserName: </td><td><input type="text" name="username" value="<?php echo$username;?>"></td></tr>
-						<br>
-						<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
-						<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
-						</table>
-						<p><INPUT type="submit" name='submit' value="Register">
-						</p>
+						    <table>
+                                <tr><td>User Name: </td><td><input type="text" name="UserName" value="<?php echo$Tutor_ID;?>"></td></tr>
+						        <tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
+						        <tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
+						        <tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
+						        <tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
+						        <tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
+						    </table>
+						    <p><INPUT type="submit" name='submit' value="Register">
+						    </p>
 						</form>
 						<?php
 						/* This will out put an error message for the user. */
@@ -142,19 +135,16 @@ session_start();
 											<br> <br> <h1>Registration.</h1>
 							<br>
 							<form action="register.php" method='POST'>
-							<table> 
-							<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
-							<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
-							<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
-							<tr><td>Place of Study: </td><td><input type="text" name="placeofstudy" value="<?php echo$placeofstudy;?>"></td></tr>
-							<tr><td>Age: </td><td><input type="text" name="age" value="<?php echo$age;?>"></td></tr>
-							<tr><td>UserName: </td><td><input type="text" name="username" value="<?php echo$username;?>"></td></tr>
-							<br>
-							<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
-							<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
-							</table>
-							<p><INPUT type="submit" name='submit' value="Register">
-							</p>
+							    <table>
+                                    <tr><td>User Name: </td><td><input type="text" name="UserName" value="<?php echo$Tutor_ID;?>"></td></tr>
+						            <tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
+						            <tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
+						            <tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
+						            <tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
+						            <tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
+						        </table>
+							    <p><INPUT type="submit" name='submit' value="Register">
+							    </p>
 							</form>
 							<!-- This will output and informational message to help the user correct
 							what ever has gone wrong. -->
@@ -179,19 +169,16 @@ session_start();
 												<br> <br> <h1>Registration.</h1>
 								<br>
 								<form action="register.php" method='POST'>
-								<table> 
-								<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
-								<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
-								<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
-								<tr><td>Place of Study: </td><td><input type="text" name="placeofstudy" value="<?php echo$placeofstudy;?>"></td></tr>
-								<tr><td>Age: </td><td><input type="text" name="age" value="<?php echo$age;?>"></td></tr>
-								<tr><td>UserName: </td><td><input type="text" name="username" value="<?php echo$username;?>"></td></tr>
-								<br>
-								<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
-								<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
-								</table>
-								<p><INPUT type="submit" name='submit' value="Register">
-								</p>
+								    <table>
+                                        <tr><td>User Name: </td><td><input type="text" name="UserName" value="<?php echo$Tutor_ID;?>"></td></tr>
+						                <tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
+						                <tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
+						                <tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
+						                <tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
+						                <tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
+						            </table>
+								    <p><INPUT type="submit" name='submit' value="Register">
+								    </p>
 								</form>
 								<!-- this will output a helpful message which will allow the user to 
 								ammend his form so that a user account can be created. -->
@@ -215,19 +202,16 @@ session_start();
 				<br> <br> <h1>Registration.</h1>
 				<br>
 				<form action="register.php" method='POST'>
-				<table> 
-				<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
-				<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
-				<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
-				<tr><td>Place of Study: </td><td><input type="text" name="placeofstudy" value="<?php echo$placeofstudy;?>"></td></tr>
-				<tr><td>Age: </td><td><input type="text" name="age" value="<?php echo$age;?>"></td></tr>
-				<tr><td>UserName: </td><td><input type="text" name="username" value="<?php echo$username;?>"></td></tr>
-				
-				<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
-				<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
-				</table>
-				<p><INPUT type="submit" name='submit' value="Register">
-				</p>
+				    <table>
+                        <tr><td>User Name: </td><td><input type="text" name="UserName" value="<?php echo$Tutor_ID;?>"></td></tr>
+						<tr><td>First Name: </td><td><input type="text" name="firstname" value="<?php echo$firstname;?>"></td></tr>
+						<tr><td>Last Name: </td><td><input type="text" name="lastname" value="<?php echo$lastname;?>"></td></tr>
+						<tr><td>E-Mail Address: </td><td><input type="text" name="email" value="<?php echo$email;?>"></td></tr>
+						<tr><td>Password: </td><td><input type="password" name="password" ></td></tr>
+						<tr><td>Repeat Password: </td><td><input type="password" name="repeatpassword" ></td></tr>
+					</table>
+				    <p><INPUT type="submit" name='submit' value="Register">
+				    </p>
 				</form>
 				<!-- this will output a helpful message which will allow the user to 
 				ammend his form so that a user account can be created. -->
