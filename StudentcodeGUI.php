@@ -10,6 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
+
+        <!--[if lt IE 9]>
+          <script src="assets/js/html5shiv.js"></script>
+        <![endif]-->
+
         <link href="/assets/css/bootstrap.css" rel="stylesheet">
         <style type="text/css">
             body {

@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Bootstrap -->
+    
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <style>
         body {
@@ -38,10 +42,16 @@
 
     <div class="container">
       <div class="hero-unit">
-        <h1>Hello, who are you?</h1>
+        <h1>Welcome to QuizzIt</h1>
+        <br>
+        <h2>Who are you?</h2>
         <p>Please select the button relevant to you below, staff or student.</p>
         <a href="LoginGUI.php" class="btn btn-large btn-primary">Staff</a>
         <a href="StudentcodeGUI.php" style ="margin-left: 5px;" class="btn btn-large">Student</a>
+        <br><br>
+        <h2>Staff registration</h2>
+        <p>If you are a 'first-time visiting' staff member, you will need to create an account on this system.</p>
+        <a href="#" class="btn btn-large btn-primary">Staff Registration</a>
       </div>
     </div>
     <script src="http://code.jquery.com/jquery.js"></script>
