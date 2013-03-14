@@ -20,18 +20,30 @@
         {
             //All fields have been filed in!
 
-            //check the Passwords are the same!
-            if($password==$repeatpassword)
-            {
-                //If the Passwwords are the same
+            //Check the Username/Tutor_Id is Unquie 
 
-            }
-            else
-            {
-                //If the Passwords are different
+            //Check by seeing if it find any usernames the same
 
 
-            }            
+            //if the Username/tutor_ID is unique them continue. 
+            //If not send back to form ask them to choose another one.
+            
+
+                //check the Passwords are the same!
+                if($password==$repeatpassword)
+                {
+                    //If the Passwwords are the same
+
+                
+
+                }
+                else
+                {
+                    //If the Passwords are different
+
+                    //Send them back to the form and have them fill it back out with the correct passwords this time
+
+                }            
 
             //Submit the data to the database
 
