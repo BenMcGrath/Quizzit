@@ -17,6 +17,7 @@
 
         //First are all fields filled in
 
+
         //If no make the form and allow them to fill it back in again.
 
         //If yes check the passwords match. If not send them back to try again.
@@ -28,6 +29,6 @@
     else
     {
         //If not they have hit this page by mistake send them back to the correct form
-        header('Location: StaffRegister.html')
+        header('Location: StaffRegister.html');
     }
 ?>
