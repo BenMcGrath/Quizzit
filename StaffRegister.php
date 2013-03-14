@@ -16,11 +16,37 @@
         //if it has run this code
 
         //First are all fields filled in
+        if ($Tutor_ID&&$firstname&&$lastname&&$email&&$password&&$repeatpassword)
+        {
+            //All fields have been filed in!
+
+            //check the Passwords are the same!
+            if($password==$repeatpassword)
+            {
+                //If the Passwwords are the same
+
+            }
+            else
+            {
+                //If the Passwords are different
 
 
-        //If no make the form and allow them to fill it back in again.
+            }            
+
+            //Submit the data to the database
+
+        }
+        else
+        {
+            //A field has not been filled in! 
+
+            //Send the form back to the user to get them to fill it in again.
+
+        }
 
         //If yes check the passwords match. If not send them back to try again.
+
+
 
         //Check the username is unique first!
 
