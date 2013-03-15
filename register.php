@@ -9,7 +9,7 @@ session_start();
 
 <html>
 <head>
-	<title>The Common Room.</title>
+	<title>Quizzit</title>
 	<!-- This links the CSS file which i have created to the webpage. -->
 	<link rel="stylesheet" href="styles.css" type="text/css" >
 </head>
