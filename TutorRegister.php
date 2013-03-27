@@ -1,8 +1,6 @@
 <?php
 //This file will allow the tutors to register to Quizzit
-
     //Functions!!!!!!!!!!!!!!!!!!!!!!
-
     //Connet to the database 
     function connectToDatabase()
     {
@@ -17,31 +15,67 @@
             die("Unable to select database");
         }
     }
-
-    //First get all the information from any post methods.
+    if (isset($_POST['submit']))
+    {
+        // the form has been submitted//Before what the user has submitted is put in to the database we need to check it all okay and follows everything said//First check all forms have been filled in
+        if ( isset($_POST['tutor_ID']) && isset($_POST['firstName']) && isset($_POST['lastName'])  && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmPassword']) )
+        {    
+                //First get all the information from any post methods
     $Tutor_ID = $_POST['tutor_ID'];
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
+	$firstName = $_POST['firstName'];
+    $uniID = $_POST['Uni_ID'];
+	$lastName = $_POST['lastName'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	$repeatpassword = $_POST['repeatpassword'];
-    $submit = $_POST['submit'];
-
-    if ($submit)
-    {
-        // if the form has been submitted
-        //Before what the user has submitted is put in to the database we need to check it all okay and follows everything said. 
-
-        //First check all forms have been filled in.
-        if ($Tutor_ID&&$firstname&&$lastname&&$email&&$password&&$repeatpassword)
-        {
+	$repeatpassword = $_POST['confirmPassword'];
             //Yes all forms have been filled in
+            connectToDatabase();
+            //Now need to check the Tutors username is not already in the database.
+            $Tutorcheck = "SELECT * FROM Tutors Where Tutor_ID='$Tutor_ID' ";
+            $result=mysql_query($Tutorcheck);
+
+
+            if($result) {
+                if(mysql_num_rows($result) == 1) 
+                {
+                    //username already in use show form to allow them to re add their data
+                    echo "Username Already in Use";
+
+                }
+                else 
+                {
+                    //Username is free now check passwords are the same.
+
+                    if ($password == $repeatpassword)
+                    {
+                        //Passwords are the same add the data to the database
+                        $addTutor = "INSERT INTO Tutors (Tutor_ID, Universities, FirstName, LastName, Password, Email) VALUES ('$Tutor_ID', '$uniID', '$firstName', '$lastName', '$password', '$email')";
+                        if (!mysql_query($addTutor))
+                        {
+                            die('Error: ' . mysql_error());
+                        }
+                        else
+                        {
+                            echo "Welcome to Quizit"; 
+                        }
+                    }
+                    else
+                    {
+                        //Passwords are differen
+                        echo "Passwords are different";
+                    }
+                    
+                }
+            }else {
+            die("Query failed");
+            }
+
 
         }
         else
         {
             //No not all forma have been filled in. 
-
+            echo "Not all forms are filled in";
 
         }
 
@@ -103,10 +137,10 @@
     </head>
     <body>
         <div class="container">
-          <form method="POST" onsubmit="validateForm(this);" class="form-register">
+          <form method="post" onsubmit="validateForm(this);" class="form-register" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <h2 class="form-register-heading">Staff registration</h2>
             <p>Please fill in the fields below to create an account.</p>
-            <input type="text" class="input-block-level required" name="Tutor_ID" id="Tutor_ID" required="required" rel="popover" data-content="Please enter your ID" placeholder="Tutor ID">
+            <input type="text" class="input-block-level required" name="tutor_ID" id="tutor_ID" required="required" rel="popover" data-content="Please enter your ID" placeholder="Tutor ID">
             <input type="text" class="input-block-level required" name="email" id="email" required="required" rel="popover" data-content="Please enter your email address" placeholder="Email">
             <input type="text" class="input-block-level required" name="firstName" id="firstName" required="required" rel="popover" data-content="Please enter your first name" placeholder="First Name">
             <input type="text" class="input-block-level required" name="lastName" id="lastName" required="required" rel="popover" data-content="Please enter your last name" placeholder="Last Name">
