@@ -62,7 +62,7 @@ $numrows = mysql_num_rows($query);
 				/*Insert the appropiate data to ensure the message is customiseable.*/
 				if ($username == $dbusername && $password==$dbpassword)
 					{
-						echo "you're in! <a href='UserPage.php'>Click</a> here to enter the members page.";
+						echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 						$_SESSION['username']=$dbusername;
 					}
 				
