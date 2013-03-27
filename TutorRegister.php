@@ -151,8 +151,10 @@
 
                     if ($password == $repeatpassword)
                     {
+                        //need to change the passwors into MD5
+                        $md5Password = md5($password);
                         //Passwords are the same add the data to the database
-                        $addTutor = "INSERT INTO Tutors (Tutor_ID, Universities, FirstName, LastName, Password, Email) VALUES ('$Tutor_ID', '$uniID', '$firstName', '$lastName', '$password', '$email')";
+                        $addTutor = "INSERT INTO Tutors (Tutor_ID, Universities, FirstName, LastName, Password, Email) VALUES ('$Tutor_ID', '$uniID', '$firstName', '$lastName', '$md5Password', '$email')";
                         if (!mysql_query($addTutor))
                         {
                             die('Error: ' . mysql_error());
