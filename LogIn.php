@@ -2,7 +2,7 @@
 <?php
 /* This piece of code allows the user to log into the website using php and MySQL. */
 
-session_start();
+
 
 /*I have assigned the value two text boxes "username" and "password" to $username and 
 $password.*/
@@ -23,7 +23,7 @@ mysql_select_db("webd_wt2") or die ("Couldn't find Database");
 
 /*This selects the row from the table "users" where the user name field is equal to 
 "$username".*/
-$query = mysql_query("SELECT * FROM users WHERE username='$username' ");
+$query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 /*This counts the number of rows within the database.*/
 $numrows = mysql_num_rows($query);
 
@@ -37,8 +37,8 @@ $numrows = mysql_num_rows($query);
 		$dbpassword.*/
 		while ($row = mysql_fetch_assoc($query))
 			{
-				$dbusername = $row['username'];
-				$dbpassword = $row['password'];
+				$dbusername = $row['Tutor_ID'];
+				$dbpassword = $row['Password'];
 			}
 
 		/*If the username and password are equal too "Admin" and "password33" then you 
@@ -46,9 +46,9 @@ $numrows = mysql_num_rows($query);
 		
 		/*This is the Admin account feature, it will allow the Admin to log into the server with special privlidges.*/
 		
-		if ( $username == Admin && $password == password33)
+		if ( $username == admin && $password == password33)
 			{
-			header("Location: http://www.webdesign.lincoln.ac.uk/wt2/phpMyAdmin.php");
+			echo "you're in! <a href='http://www.webdesign.lincoln.ac.uk/wt2/phpMyAdmin.php'>Click</a> here to enter the members page.";
 			exit;
 			}
 
