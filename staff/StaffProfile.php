@@ -59,7 +59,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
             <span class="icon-bar"></span>
           </button>
          
-		 <a class="brand" href="Default.html">QuizzIt - 
+		 <a class="brand" href="StaffProfile.php">QuizzIt - 
 				<?php 
 					echo $uniName['Name'];
 				?>
