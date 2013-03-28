@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+	//Check whether the session variable SESS_USER_ID is present or not
+	if(isset($_SESSION['username']))
+    {
+		//They are already logged in
+        header ('Location: StaffProfile.php');
+
+	}
+?>
 <!DOCTYPE html>
 <html>
     <head>
