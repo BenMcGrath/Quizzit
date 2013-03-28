@@ -59,10 +59,10 @@ if (isset($_SESSION['username']))
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Profile</a></li>
-              <li><a href="About.html">About</a></li>
-              <li><a href="Contact.html">Contact</a></li>
-              <li><a href="tutorial.html">Tutorial</a></li>
-              <li><a href="AdminLogin.html">Admin</a></li>
+              <li><a href="About.php">About</a></li>
+              <li><a href="Contact.php">Contact</a></li>
+              <li><a href="tutorial.php">Tutorial</a></li>
+              <li><a href="AdminLogin.php">Admin</a></li>
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username; ?><b class="caret"></b></a>
 				<ul class="dropdown-menu">

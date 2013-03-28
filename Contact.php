@@ -33,10 +33,10 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="Default.php">Home</a></li>
-              <li><a href="About.html">About</a></li>
-              <li class="active"><a href="Contact.html">Contact</a></li>
-              <li><a href="tutorial.html">Tutorial</a></li>
-              <li><a href="AdminLogin.html">Admin</a></li>
+              <li><a href="About.php">About</a></li>
+              <li class="active"><a href="Contact.php">Contact</a></li>
+              <li><a href="tutorial.php">Tutorial</a></li>
+              <li><a href="AdminLogin.php">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
