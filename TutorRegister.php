@@ -161,7 +161,9 @@
                         }
                         else
                         {
-                            echo "Welcome to Quizit"; 
+                            echo "Welcome to Quizit" . "<br />";
+                            echo "Your account has been created" . "<br />";
+                            echo "<a href=\"\">Back to Home</a>";
                         }
                     }
                     else
