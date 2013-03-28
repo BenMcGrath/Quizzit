@@ -69,7 +69,7 @@ if (isset($_SESSION['username']))
                 <li><a href="http://webdesign.lincoln.ac.uk/wt2/testroom/staff/StaffProfile.php">Profile</a></li>
                 </ul>
 				</li>
-              <li><a href="Logout.php">Log Out ... NIGGER </a></li>
+              <li><a href="Logout.php">Log Out</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
