@@ -76,7 +76,7 @@ $tutDetails = mysql_fetch_array($query);
         <h1>Modules
         </h1>
         <p>Hello here you can add modules you teach at your Universtiy</p>
-        <a href="addmodule.php" class="btn btn-large btn-primary">Add a Module</a>
+        <a href="LoginGUI.html" class="btn btn-large btn-primary">Add a Module</a>
         <h2>Your Modules</h2>
         <?php
             //show Modules this tutor teaches

@@ -3,7 +3,7 @@ session_start();
 //Need to get the Session ID 
 if (!isset($_SESSION['username']))
 {
-    header ('Location: LoginGUI.php');
+    header ('Location: ../LoginGUI.php');
 }
 $username = $_SESSION['username'];
 
