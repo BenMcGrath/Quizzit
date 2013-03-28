@@ -16,6 +16,12 @@ $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 $tutDetails = mysql_fetch_array($query);
 //Get the Universtiy They are at
 
+//First get the ID in their account
+$tutUniID = $tutDetails['Universities'];
+
+//Now get the Name of that UNI
+$uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
+$uniName = mysql_fetch_array($uniNameQuery);
 
 ?>
 
@@ -77,25 +83,8 @@ $tutDetails = mysql_fetch_array($query);
         </h1>
         <p>Hello here you can add modules you teach at your Universtiy</p>
         <a href="LoginGUI.html" class="btn btn-large btn-primary">Add a Module</a>
-        <h2>Your Modules</h2>
-        <?php
-            //show Modules this tutor teaches
-
-            //Get
-            $tutUniID = $tutDetails['Universities'];
-
-            //Not get the Modules
-            $modulesquery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
-            //$Modules = mysql_fetch_array($modulesquery);
-
-
-            //The user does not have an entry for this ride.
-            while( $Modules = mysql_fetch_array( $modulesquery ) )
-            {
-                //display all the modules that they are running here
-             }
-
-        ?>
+        <h2>Add Module</h2>
+        
 
 
 

@@ -16,6 +16,12 @@ $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 $tutDetails = mysql_fetch_array($query);
 //Get the Universtiy They are at
 
+//First get the ID in their account
+$tutUniID = $tutDetails['Universities'];
+
+//Now get the Name of that UNI
+$uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
+$uniName = mysql_fetch_array($uniNameQuery);
 
 ?>
 
