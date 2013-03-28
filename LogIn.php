@@ -1,4 +1,3 @@
-
 <?php
 /* This piece of code allows the user to log into the website using php and MySQL. */
 //Start session
@@ -67,7 +66,9 @@ $numrows = mysql_num_rows($query);
 						
 						$_SESSION['username']=$dbusername;
                         session_write_close();
-                        echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
+                        header ('Location: StaffProfile.html');
+                        exit;
+                        //echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 					}
 				
 				else 
