@@ -7,7 +7,7 @@ session_start();
 	if(isset($_SESSION['username']))
     {
 		//They are already logged in
-        header ('Location: StaffProfile.php');
+        header ('Location: staff/StaffProfile.php');
 
 	}
 
@@ -74,7 +74,7 @@ $numrows = mysql_num_rows($query);
 						
 						$_SESSION['username']=$dbusername;
                         session_write_close();
-                        header ('Location: StaffProfile.php');
+                        header ('Location: staff/StaffProfile.php');
                         exit;
                         //echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 					}
