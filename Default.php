@@ -11,7 +11,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
 ?>
 <!DOCTYPE html>
 <?php
-if (!isset($_SESSION['username']))
+if (isset($_SESSION['username']))
 	{
 	?>
 		<html>
@@ -47,6 +47,7 @@ if (!isset($_SESSION['username']))
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
          
 		 <a class="brand" href="Default.html">QuizzIt - 
@@ -66,6 +67,7 @@ if (!isset($_SESSION['username']))
               <li><a href="#">Results</a></li>
               <li><a href="#">Notes</a></li>
               <li><a href="#">Trending</a></li>
+              <li><a href="Logout.php">Log Out ... NIGGER </a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
