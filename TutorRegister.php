@@ -91,6 +91,28 @@
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     </head>
     <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="Default.html">QuizzIt</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="Default.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="tutorial.html">Tutorial</a></li>
+              <li><a href="AdminLogin.html">Admin</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
         <div class="container">
           <form method="post" onsubmit="validateForm(this);" class="form-register" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <h2 class="form-register-heading">Staff registration</h2>
@@ -219,6 +241,28 @@
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     </head>
     <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="Default.html">QuizzIt</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="Default.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="tutorial.html">Tutorial</a></li>
+              <li><a href="AdminLogin.html">Admin</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
         <div class="container">
           <form method="post" onsubmit="validateForm(this);" class="form-register" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <h2 class="form-register-heading">Staff registration</h2>
@@ -345,6 +389,28 @@
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     </head>
     <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="Default.html">QuizzIt</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="Default.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="tutorial.html">Tutorial</a></li>
+              <li><a href="AdminLogin.html">Admin</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
         <div class="container">
           <form method="post" onsubmit="validateForm(this);" class="form-register" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <h2 class="form-register-heading">Staff registration</h2>
