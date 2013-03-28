@@ -1,6 +1,6 @@
 <?php
 session_start();
-$username = $_SESSION9['username'];
+$username = $_SESSION['username'];
 $connect = mysql_connect("localhost", "webd_wt2user", "RD3%JgdAcI5!" ) or die("Couldn't connect");
 mysql_select_db("webd_wt2") or die ("Couldn't find Database");
 $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
@@ -14,7 +14,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
 if (isset($_SESSION['username']))
 	{
 	?>
-		<html>
+	<html>
 	<head>
     <title>Home &middot; QuizzIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,10 +63,12 @@ if (isset($_SESSION['username']))
               <li><a href="Contact.html">Contact</a></li>
               <li><a href="tutorial.html">Tutorial</a></li>
               <li><a href="AdminLogin.html">Admin</a></li>
-              <li><a href="#">Modules</a></li>
-              <li><a href="#">Results</a></li>
-              <li><a href="#">Notes</a></li>
-              <li><a href="#">Trending</a></li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username; ?><b class="caret"></b></a>
+				<ul class="dropdown-menu">
+                <li><a href="http://webdesign.lincoln.ac.uk/wt2/testroom/staff/StaffProfile.php">Profile</a></li>
+                </ul>
+				</li>
               <li><a href="Logout.php">Log Out ... NIGGER </a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -88,7 +90,7 @@ if (isset($_SESSION['username']))
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="/assets/js/bootstrap-dropdown.js"></script>
     <script src="assets/js/bootstrap-scrollspy.js"></script>
     <script src="assets/js/bootstrap-tab.js"></script>
     <script src="assets/js/bootstrap-tooltip.js"></script>
@@ -97,6 +99,9 @@ if (isset($_SESSION['username']))
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script>
+        $('.dropdown-toggle').dropdown()
+    </script>
 	</body>
 	</html>
 	<?php	
