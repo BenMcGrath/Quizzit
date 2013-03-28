@@ -1,7 +1,8 @@
 
 <?php
 /* This piece of code allows the user to log into the website using php and MySQL. */
-
+//Start session
+session_start();
 
 
 /*I have assigned the value two text boxes "username" and "password" to $username and 
@@ -63,8 +64,10 @@ $numrows = mysql_num_rows($query);
 				/*Insert the appropiate data to ensure the message is customiseable.*/
 				if ($username == $dbusername && $MD5password==$dbpassword)
 					{
-						echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
+						
 						$_SESSION['username']=$dbusername;
+                        session_write_close();
+                        echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 					}
 				
 				else 
