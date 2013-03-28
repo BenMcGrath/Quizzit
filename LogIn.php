@@ -12,7 +12,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 
-if ($username && $password)
+if ($username != "" && $password != "")
 {
 
 /*This connects to the MySQL database "users".*/
@@ -57,10 +57,11 @@ $numrows = mysql_num_rows($query);
 			{
 			
 				/*If the username and password are not equal to that but the username and 
-				password can be found within the table the following code will be performed.*/			
+				password can be found within the table the following code will be performed.*/
+                $MD5password = md5($password);			
 				
 				/*Insert the appropiate data to ensure the message is customiseable.*/
-				if ($username == $dbusername && $password==$dbpassword)
+				if ($username == $dbusername && $MD5password==$dbpassword)
 					{
 						echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 						$_SESSION['username']=$dbusername;
@@ -80,7 +81,6 @@ $numrows = mysql_num_rows($query);
 	and then kill this process.*/
 	else
 		die("That user doesn't exist.");
-
 }	
 
 /*If the username and password fields are empty then this message appears.*/
