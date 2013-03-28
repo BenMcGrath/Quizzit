@@ -70,7 +70,7 @@
           <a class="brand" href="Default.html">QuizzIt</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="Default.html">Home</a></li>
+              <li><a href="Default.html">Home</a></li>
               <li><a href="About.html">About</a></li>
               <li><a href="Contact.html">Contact</a></li>
               <li><a href="tutorial.html">Tutorial</a></li>
