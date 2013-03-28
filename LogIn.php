@@ -3,6 +3,14 @@
 //Start session
 session_start();
 
+	//Check whether the session variable SESS_USER_ID is present or not
+	if(isset($_SESSION['username']))
+    {
+		//They are already logged in
+        header ('Location: StaffProfile.php');
+
+	}
+
 
 /*I have assigned the value two text boxes "username" and "password" to $username and 
 $password.*/
@@ -66,7 +74,7 @@ $numrows = mysql_num_rows($query);
 						
 						$_SESSION['username']=$dbusername;
                         session_write_close();
-                        header ('Location: StaffProfile.html');
+                        header ('Location: StaffProfile.php');
                         exit;
                         //echo "you're in! <a href='StaffProfile.html'>Click</a> here to enter the members page.";
 					}
