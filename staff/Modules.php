@@ -39,13 +39,13 @@ $uniName = mysql_fetch_array($uniNameQuery);
       <script src="assets/js/html5shiv.js"></script>
     <![endif]-->
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <style>
         body {
             padding-top: 60px;
         }
     </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
   <body>
@@ -67,8 +67,8 @@ $uniName = mysql_fetch_array($uniNameQuery);
 		  
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Profile</a></li>
-              <li><a href="#">Modules</a></li>
+              <li><a href="StaffProfile.php">Profile</a></li>
+              <li><a href="Modules.php">Modules</a></li>
               <li><a href="#">Results</a></li>
               <li><a href="#">Notes</a></li>
               <li><a href="#">Trending</a></li>
@@ -80,18 +80,13 @@ $uniName = mysql_fetch_array($uniNameQuery);
 
     <div class="container">
       <div class="hero-unit">
-        <h1>Welcome, 
-            <?php
-                echo $tutDetails['FirstName'] . " " . $tutDetails['LastName'];
-            ?>
+        <h1>Modules
         </h1>
+        <p>Hello here you can add/join modules you teach at your Universtiy</p>
+        <a href="LoginGUI.html" class="btn btn-large btn-primary">Add a Module</a>
 
-        <br>
-        <h2>Where to go from here</h2>
-        <p>Please use the links in the navigation bar to view the corresponding pages</p>
-        <br>
-        <h2>How to create a new quiz</h2>
-        <p>To create a new quiz, you will need to go to the modules page, select a module, and then create a new quiz relating to that module</p>
+
+
       </div>
     </div>
     <script src="http://code.jquery.com/jquery.js"></script>

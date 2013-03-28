@@ -39,13 +39,13 @@ $uniName = mysql_fetch_array($uniNameQuery);
       <script src="assets/js/html5shiv.js"></script>
     <![endif]-->
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <style>
         body {
             padding-top: 60px;
         }
     </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
   <body>
@@ -67,8 +67,8 @@ $uniName = mysql_fetch_array($uniNameQuery);
 		  
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Profile</a></li>
-              <li><a href="#">Modules</a></li>
+              <li><a href="StaffProfile.php">Profile</a></li>
+              <li><a href="Modules.php">Modules</a></li>
               <li><a href="#">Results</a></li>
               <li><a href="#">Notes</a></li>
               <li><a href="#">Trending</a></li>
