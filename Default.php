@@ -50,7 +50,7 @@ if (isset($_SESSION['username']))
             <span class="icon-bar"></span>
           </button>
          
-		 <a class="brand" href="Default.html">QuizzIt - 
+		 <a class="brand" href="Default.php">QuizzIt - 
 				<?php 
 					echo $uniName['Name'];
 				?>
