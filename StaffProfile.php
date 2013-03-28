@@ -1,18 +1,29 @@
 <?php
 session_start();
-
+//Need to get the Session ID 
+if (!isset($_SESSION['username']))
+{
+    header ('Location: LoginGUI.php');
+}
 $username = $_SESSION['username'];
 
+//Connect to the Database
 $connect = mysql_connect("localhost", "webd_wt2user", "RD3%JgdAcI5!" ) or die("Couldn't connect");
 mysql_select_db("webd_wt2") or die ("Couldn't find Database");
 
+//Get The tutors details
 $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
+$tutDetails = mysql_fetch_array($query);
+//Get the Universtiy They are at
 
-$universities =  mysql_query("SELECT * FROM Universities ORDER BY Name");
+//First get the ID in their account
+$tutUniID = $tutDetails['Universities'];
 
-$numrows = mysql_num_rows($query);
+//Now get the Name of that UNI
+$uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
+$uniName = mysql_fetch_array($uniNameQuery);
 
-$row = mysql_fetch_array($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -50,12 +61,8 @@ $row = mysql_fetch_array($query);
          
 		 <a class="brand" href="Default.html">QuizzIt - 
 				<?php 
-					while( $row = mysql_fetch_array( $universities ) )
-					{
-						{echo $row['Name'];
-					}
+					echo $uniName['Name'];
 				?>
-				
 		  </a>
 		  
           <div class="nav-collapse collapse">
@@ -73,7 +80,12 @@ $row = mysql_fetch_array($query);
 
     <div class="container">
       <div class="hero-unit">
-        <h1>Welcome, 'STAFF NAME HERE?'</h1>
+        <h1>Welcome, 
+            <?php
+                echo $tutDetails['FirstName'] . " " . $tutDetails['LastName'];
+            ?>
+        </h1>
+
         <br>
         <h2>Where to go from here</h2>
         <p>Please use the links in the navigation bar to view the corresponding pages</p>
