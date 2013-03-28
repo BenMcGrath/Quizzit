@@ -1,16 +1,22 @@
-<!DOCTYPE html>
 <?php
 session_start();
+
+$username = $_SESSION['username'];
 
 $connect = mysql_connect("localhost", "webd_wt2user", "RD3%JgdAcI5!" ) or die("Couldn't connect");
 mysql_select_db("webd_wt2") or die ("Couldn't find Database");
 
 $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 
+$universities =  mysql_query("SELECT * FROM Universities ORDER BY Name");
+
 $numrows = mysql_num_rows($query);
 
 $row = mysql_fetch_array($query);
 ?>
+
+<!DOCTYPE html>
+
 <html>
   <head>
     <title>Staff Profile &middot; QuizzIt</title>
@@ -41,7 +47,17 @@ $row = mysql_fetch_array($query);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="Default.html">QuizzIt - <?php echo $row['Universities']; ?></a>
+         
+		 <a class="brand" href="Default.html">QuizzIt - 
+				<?php 
+					while( $row = mysql_fetch_array( $universities ) )
+					{
+						{echo $row['Name'];
+					}
+				?>
+				
+		  </a>
+		  
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Profile</a></li>
