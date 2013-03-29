@@ -32,10 +32,20 @@ if (isset($_POST['submit']))
     if ( isset($modName) && isset($uniID) && isset($modPassword) )
     {
         //Yes everything filled in so now need to add it to the database. 
+        $modaddquery = "INSERT INTO Modules ('Module_ID', 'Name', 'Uni_ID', 'Password') VALUES ('', '$modName ', '$uniID', '$modPassword')");
+        if (!mysql_query($modaddquery))
+        {
+            die('Error: ' . mysql_error());
+        }
+        else
+        {
+            //now its has been added got to get the ID number that will have on it which the database with make.
+            //This will allow use to get the tutor connected to the module
+            $modIDquery = "SELECT * FROM Modules WHERE Name='$modName' AND Uni_ID='$uniID' AND Password='$modPassword' "
 
+        }
     }
 }
-
 //Get The tutors details
 $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 $tutDetails = mysql_fetch_array($query);
