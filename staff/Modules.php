@@ -88,18 +88,48 @@ $uniName = mysql_fetch_array($uniNameQuery);
             //show Modules this tutor teaches
 
             //Get the tutor username 
-            $tutorID = $username
+            $tutorID = $username;
 
             //Now get the Modules
             $modulesquery =  mysql_query("SELECT * FROM Tutor_Modules WHERE Tutor_ID = '$tutorID'");
             //$Modules = mysql_fetch_array($modulesquery);
 
 
-            //The user does not have an entry for this ride.
-            while( $Modules = mysql_fetch_array( $modulesquery ) )
-            {
-                //display all the modules that they are running here
-             }
+				if($modulesquery) {
+					if(mysql_num_rows($modulesquery) == 0) {
+						echo "<p>You dont have Modules.</p>";
+					}else {
+						//The user does not have an entry for this ride.
+						while( $myArray = mysql_fetch_array( $modulesquery ) )
+						{
+								$moduleID = $myArray['Module_ID'];
+								$moduleinfoquery = mysql_query("SELECT * FROM Modules WHERE ID = '$moduleID' ");							
+								if($moduleinfoquery)
+								{
+									$row = mysql_fetch_array($moduleinfoquery);
+								}
+								else
+								{
+									die('Error: ' . mysql_error());
+								}
+
+                                echo "Module Name: " . $row['Name'] . "<br />";
+                                /*
+							echo "<div class=\"messagebox\">" 
+								."<div class=\"messageusername\"> " . $row['firstname'] . " " . $row['lastname'] .  "</div>"
+								."<div class=\"messagesubject\">Subject: <u>"
+								.$myArray['subject'].  "</u></div>"
+
+								."<div class=\"messagedate\"> " . $myArray['date'] . "</div>"	
+								."<div class=\"clear\"></div>"
+								."<div class=\"messagecontent\"> <div class=\"uparrowdiv\"> " . $myArray['message'] 
+								."</div> </div>  </div>" 
+								;*/
+						}
+					}
+				}else {
+					die("Query failed");
+				}
 
         ?>
 
