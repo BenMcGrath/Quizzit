@@ -5,7 +5,7 @@
 	if(isset($_SESSION['username']))
     {
 		//They are already logged in
-        header ('Location: StaffProfile.php');
+        header ('Location: staff/StaffProfile.php');
 
 	}
 ?>
