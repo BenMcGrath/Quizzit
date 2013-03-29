@@ -47,7 +47,6 @@ if (isset($_SESSION['username']))
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
          
 		 <a class="brand" href="Default.php">QuizzIt - 
@@ -58,11 +57,10 @@ if (isset($_SESSION['username']))
 		  
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Profile</a></li>
-              <li><a href="About.php">About</a></li>
+              <li><a href="Default.php">Home</a></li>
+              <li class="active"><a href="About.php">About</a></li>
               <li><a href="Contact.php">Contact</a></li>
               <li><a href="tutorial.php">Tutorial</a></li>
-              <li><a href="AdminLogin.php">Admin</a></li>
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username; ?><b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -150,8 +148,8 @@ if (isset($_SESSION['username']))
           <a class="brand" href="Default.php">QuizzIt</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="Default.php">Home</a></li>
-              <li><a href="About.php">About</a></li>
+              <li><a href="Default.php">Home</a></li>
+              <li class="active"><a href="About.php">About</a></li>
               <li><a href="Contact.php">Contact</a></li>
               <li><a href="tutorial.php">Tutorial</a></li>
               <li><a href="AdminLogin.php">Admin</a></li>
@@ -195,16 +193,3 @@ if (isset($_SESSION['username']))
 	<?php
 	}
 ?>
-
-
-
-        <h1>About</h1>
-        <br>
-        <h2>What is QuizzIt?</h2>
-        <p>It is a quiz system used by lecturers to test student's overall understanding of a particular subject.
-        Students anonymously take a quiz set by a lecturer and then the results are displayed to the class.</p>
-        <br>
-        <h2>Why has it been developed?</h2>
-        <p>It is hard for lecturers to know if students in their classes understand the subject being taught. It is
-        important for students to understand subjects in order to do well in assessments/exams, it is hoped that the
-        QuizzIt system will help reinforce student's understanding of different subjects.</p>
