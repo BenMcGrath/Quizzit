@@ -11,6 +11,31 @@ $username = $_SESSION['username'];
 $connect = mysql_connect("localhost", "webd_wt2user", "RD3%JgdAcI5!" ) or die("Couldn't connect");
 mysql_select_db("webd_wt2") or die ("Couldn't find Database");
 
+//Check for add module 
+if (isset($_POST['submit']))
+{
+    //The user has sent the add module need to add it to the database.
+
+    //Get all the information need
+
+    //Tutor ID
+    $tutorID = $username;
+    //Module Name
+    $modName = $_POST['modName'];
+    //uni ID
+    $uniID = $_POST['Uni_ID'];
+    //Module Password
+    $modPassword = $_POST['modPass'];
+
+    //Now Check they are all filled in
+
+    if ( isset($modName) && isset($uniID) && isset($modPassword) )
+    {
+        //Yes everything filled in so now need to add it to the database. 
+
+    }
+}
+
 //Get The tutors details
 $query = mysql_query("SELECT * FROM Tutors WHERE Tutor_ID='$username' ");
 $tutDetails = mysql_fetch_array($query);
@@ -84,6 +109,30 @@ $uniName = mysql_fetch_array($uniNameQuery);
         <p>Hello here you can add modules you teach at your Universtiy</p>
         <a href="LoginGUI.html" class="btn btn-large btn-primary">Add a Module</a>
         <h2>Add Module</h2>
+        <p>Please use the form below to add a module</p>
+        <form method="post" onsubmit="validateForm(this);" class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="modName" name="modName" data-content="Please enter The Module Name" placeholder="Module Name">
+            <select name="Uni_ID">
+            <?php
+                //need to add the code that shows all the univertsy in the system
+                //do it by a list format
+                //connect to the database.
+                
+
+
+                $universities = mysql_query("SELECT * FROM Universities ORDER BY Name");
+                    
+                while( $myArray = mysql_fetch_array( $universities ) )
+                {
+                    echo "<option value=\"". $myArray['ID'] . "\">" . $myArray['Name'] . "</option> \r\n"  ;
+                }
+                //<input type="text" class="input-block-level required" name="university" id="university" required="required" rel"popover" data-content="Please enter your university" placeholder="University">
+
+            ?>
+            </select>
+            <input type="password" class="input-block-level required" required="required" rel="popover" id="modPass" name="modPass" data-content="Please enter your password" placeholder="Password">
+            <button class="btn btn-large btn-primary" type="submit" name="submit" id="submit">Make Module</button>
+        </form>
         
 
 
