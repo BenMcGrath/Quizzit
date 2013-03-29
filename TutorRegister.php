@@ -98,7 +98,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
           <a class="brand" href="Default.html">QuizzIt</a>
           <div class="nav-collapse collapse">
@@ -107,7 +106,6 @@
               <li><a href="About.html">About</a></li>
               <li><a href="Contact.html">Contact</a></li>
               <li><a href="tutorial.html">Tutorial</a></li>
-              <li><a href="AdminLogin.html">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
