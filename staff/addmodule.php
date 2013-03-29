@@ -31,19 +31,50 @@ if (isset($_POST['submit']))
 
     if ( isset($modName) && isset($uniID) && isset($modPassword) )
     {
+        $codetrue = FALSE;
+        $i = 1;
+
+        while($codetrue != TRUE)
+        {
+            //Make a Unique code for the modules
+            $uniquecode = uniqid(mod);
+
+            //As a precuastion check the code is not already in use. 
+            $codeCheck = mysql_query("SELECT * FROM Modules WHERE ID='".$uniquecode."' ");
+            $codenumrows = mysql_num_rows($codeCheck);
+            $i = $i++;
+
+            if ($codenumrows > 0)
+            {
+                //Not Correct re run the while
+            }
+            else
+            {
+                //Correct end while loop
+                $codetrue = TRUE;
+                echo $i;
+            }
+
+            if($n > 10)
+            {
+                $codeCheck = TRUE;
+            }
+        } 
+        //Now we have a Unique code that not already in use we can add it all into the database.
+
         //Yes everything filled in so now need to add it to the database. 
-        $modaddquery = "INSERT INTO Modules ('Module_ID', 'Name', 'Uni_ID', 'Password') VALUES ('', '$modName ', '$uniID', '$modPassword')");
+        $modaddquery = "INSERT INTO Modules (ID, Name, Uni_ID, Password) VALUES ('$uniquecode', '$modName', '$uniID', '$modPassword')";
         if (!mysql_query($modaddquery))
         {
             die('Error: ' . mysql_error());
         }
-        else
+        //now need to connect the module to the tutor
+        $tutmodquery = "INSERT INTO Tutor_Modules (Tutor_ID, Module_ID) VALUES ('$username', '$uniquecode')";
+        if (!mysql_query($tutmodquery))
         {
-            //now its has been added got to get the ID number that will have on it which the database with make.
-            //This will allow use to get the tutor connected to the module
-            $modIDquery = "SELECT * FROM Modules WHERE Name='$modName' AND Uni_ID='$uniID' AND Password='$modPassword' "
-
+            die('Error: ' . mysql_error());
         }
+
     }
 }
 //Get The tutors details
@@ -116,9 +147,13 @@ $uniName = mysql_fetch_array($uniNameQuery);
       <div class="hero-unit">
         <h1>Modules
         </h1>
+        <?php
+            echo $username;
+        ?>
         <p>Hello here you can add modules you teach at your Universtiy</p>
-        <a href="LoginGUI.html" class="btn btn-large btn-primary">Add a Module</a>
+
         <h2>Add Module</h2>
+
         <p>Please use the form below to add a module</p>
         <form method="post" onsubmit="validateForm(this);" class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="text" class="input-block-level required" required="required" rel="popover" id="modName" name="modName" data-content="Please enter The Module Name" placeholder="Module Name">

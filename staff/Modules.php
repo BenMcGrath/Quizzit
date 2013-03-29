@@ -87,11 +87,11 @@ $uniName = mysql_fetch_array($uniNameQuery);
         <?php
             //show Modules this tutor teaches
 
-            //Get
-            $tutUniID = $tutDetails['Universities'];
+            //Get the tutor username 
+            $tutorID = $username
 
-            //Not get the Modules
-            $modulesquery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
+            //Now get the Modules
+            $modulesquery =  mysql_query("SELECT * FROM Tutor_Modules WHERE Tutor_ID = '$tutorID'");
             //$Modules = mysql_fetch_array($modulesquery);
 
 
