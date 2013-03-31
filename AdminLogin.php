@@ -67,14 +67,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="Default.html">QuizzIt</a>
+          <a class="brand" href="Default.php">QuizzIt</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="Default.html">Home</a></li>
-              <li><a href="About.html">About</a></li>
-              <li><a href="Contact.html">Contact</a></li>
-              <li><a href="tutorial.html">Tutorial</a></li>
-              <li><a href="AdminLogin.html">Admin</a></li>
+              <li><a href="Default.php">Home</a></li>
+              <li><a href="About.php">About</a></li>
+              <li><a href="Contact.php">Contact</a></li>
+              <li><a href="tutorial.php">Tutorial</a></li>
+              <li><a href="AdminLogin.php">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
