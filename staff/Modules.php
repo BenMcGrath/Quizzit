@@ -100,6 +100,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
 						echo "<p>You dont have Modules.</p>";
 					}else {
 						//The user does not have an entry for this ride.
+                        echo "<ul>";
 						while( $myArray = mysql_fetch_array( $modulesquery ) )
 						{
 								$moduleID = $myArray['Module_ID'];
@@ -113,7 +114,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
 									die('Error: ' . mysql_error());
 								}
 
-                                echo "Module Name: " . $row['Name'] . "<br />";
+                                echo "<li> " . $row['Name'] . " -  <a href=\"#\">Create a Quiz!</A> " . "</li>"  ;
                                 /*
 							echo "<div class=\"messagebox\">" 
 								."<div class=\"messageusername\"> " . $row['firstname'] . " " . $row['lastname'] .  "</div>"
@@ -126,6 +127,7 @@ $uniName = mysql_fetch_array($uniNameQuery);
 								."</div> </div>  </div>" 
 								;*/
 						}
+                        echo "</ul>";
 					}
 				}else {
 					die("Query failed");
