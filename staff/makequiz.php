@@ -35,6 +35,17 @@ else
     header ('Location: Modules.php');
 }
 
+//Now we need to get the data from that module.
+$moduleinfoquery = mysql_query("SELECT * FROM Modules WHERE ID = '$ModuleID' ");							
+if($moduleinfoquery)
+{
+	$moduleinfo = mysql_fetch_array($moduleinfoquery);
+}
+else
+{
+	die('Error: ' . mysql_error());
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -92,9 +103,18 @@ else
     <div class="container">
       <div class="hero-unit">
         <h1>
-            Make a Quiz
+            Make a Quiz - 
+            <?php
+                echo $moduleinfo['Name'];
+            ?>
         </h1>
-
+        <p>
+            Here we are going to make a quiz for - 
+            <?php
+                echo $moduleinfo['Name'];
+            ?>
+        </p>
+        <p>Form and info goes here!</p>
 
       </div>
     </div>
