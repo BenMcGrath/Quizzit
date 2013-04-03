@@ -99,7 +99,9 @@ $uniName = mysql_fetch_array($uniNameQuery);
 					if(mysql_num_rows($modulesquery) == 0) {
 						echo "<p>You dont have Modules.</p>";
 					}else {
-						//The user does not have an entry for this ride.
+						//The Tutor has modules
+                        //We now need to show them and a link to create a quiz for them.
+                        //Asa result the link must pass the module ID 
                         echo "<ul>";
 						while( $myArray = mysql_fetch_array( $modulesquery ) )
 						{
@@ -114,18 +116,9 @@ $uniName = mysql_fetch_array($uniNameQuery);
 									die('Error: ' . mysql_error());
 								}
 
-                                echo "<li> " . $row['Name'] . " -  <a href=\"#\">Create a Quiz!</A> " . "</li>"  ;
-                                /*
-							echo "<div class=\"messagebox\">" 
-								."<div class=\"messageusername\"> " . $row['firstname'] . " " . $row['lastname'] .  "</div>"
-								."<div class=\"messagesubject\">Subject: <u>"
-								.$myArray['subject'].  "</u></div>"
-
-								."<div class=\"messagedate\"> " . $myArray['date'] . "</div>"	
-								."<div class=\"clear\"></div>"
-								."<div class=\"messagecontent\"> <div class=\"uparrowdiv\"> " . $myArray['message'] 
-								."</div> </div>  </div>" 
-								;*/
+        
+                                echo "<li> " . $row['Name'] . " -  <a href=\"makequiz.php?mid=" . $row['ID'] . "\">Create a Quiz!</A> " . "</li>"  ;
+                                
 						}
                         echo "</ul>";
 					}
