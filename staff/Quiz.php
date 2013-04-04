@@ -108,6 +108,9 @@
                         <table>
                             <tr>
                                 <td>
+                                    Quiz ID
+                                </td>
+                                <td>
                                     Quiz Name
                                 </td>
                                 <td>
@@ -125,10 +128,17 @@
                             </tr>
             <?php
                         //We will do this with a while loop
-                        while($myArray = mysql_fetch_array( $result ))
+                        while($Quizarray = mysql_fetch_array( $result ))
                         {
                             echo "<tr>";
 
+                            echo "<td>". $Quizarray['ID'] ."</td>\n";
+                            echo "<td>". $Quizarray['Name'] ."</td>\n";
+                            echo "<td>". $Quizarray['Live'] ."</td>\n";
+                            echo "<td>". "<a href=\"EditQuiz.php?qid=".$Quizarray['ID']."\">Edit</a>" ."</td>\n";
+                            echo "<td>". "Make Live" ."</td>\n";
+                            echo "<td>". "View Results" ."</td>\n";
+                            
 
 
                             echo "</tr>";
