@@ -170,6 +170,7 @@ else
             <ul class="nav">
               <li><a href="StaffProfile.php">Profile</a></li>
               <li><a href="Modules.php">Modules</a></li>
+              <li><a href="Quiz.php">Quizzes</a></li>
               <li><a href="#">Results</a></li>
               <li><a href="#">Notes</a></li>
               <li><a href="#">Trending</a></li>
