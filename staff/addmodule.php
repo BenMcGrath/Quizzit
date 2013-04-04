@@ -29,6 +29,7 @@ if (isset($_POST['submit']))
 
     //Now Check they are all filled in
 
+
     if ( isset($modName) && isset($uniID) && isset($modPassword) )
     {
         $codetrue = FALSE;

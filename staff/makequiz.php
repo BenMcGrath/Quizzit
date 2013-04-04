@@ -23,28 +23,107 @@ $tutUniID = $tutDetails['Universities'];
 $uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
 $uniName = mysql_fetch_array($uniNameQuery);
 
-//As this pages will make a page we need to get the module ID that was sent over in the link
-if(isset($_GET['mid']))
+
+//Has the form been submitted?
+if(isset($_POST['submit']))
 {
-    //Yes it is set save it in a Varible
-    $ModuleID = $_GET['mid'];
+
+
+    //now we have the data nopw need to think about putting it in the database
+    //first check everything is filled in
+    if( isset($_POST['quizName']) && isset($_POST['quizID']) && isset($_POST['tutID']) && isset($_POST['modID']))
+    {
+        $QuizName = $_POST['quizName'];
+        $QuizID = $_POST['quizID'];
+        $TutID = $_POST['tutID'];
+        $ModuleID = $_POST['modID'];
+
+        //Yes everything filled in now put it in the database
+        $quizinsertquery = "INSERT INTO Quizzes (ID, Tutor_ID, Module_ID, Name, Live) VALUES ('$QuizID', '$TutID', '$ModuleID', '$QuizName', 'F' )";
+        if (!mysql_query($quizinsertquery))
+        {
+            //Failed
+                    echo $QuizID;
+        echo $QuizName;
+        echo $TutID;
+            die('Error: ' . mysql_error());
+        }
+        else
+        {
+            //Worked
+            //Now send them to the area to work on the quiz and add questions. 
+            header ('Location: Quiz.php');
+        }
+    }
+    else
+    {
+        echo $QuizID;
+        echo $QuizName;
+        echo $TutID;
+        echo "Error Something gone wrong";
+    }
+
 }
 else
 {
-    //Nope an ID has not been Set as a result sent them back to the module page. 
-    header ('Location: Modules.php');
+    //As this pages will make a page we need to get the module ID that was sent over in the link
+    if(isset($_GET['mid']))
+    {
+        //Yes it is set save it in a Varible
+        $ModuleID = $_GET['mid'];
+    }
+    else
+    {
+        //Nope an ID has not been Set as a result sent them back to the module page. 
+        header ('Location: Modules.php');
+    }
+
+    //As this pages will make a page we need to get the module ID that was sent over in the link
+    if(isset($_GET['mid']))
+    {
+        //Yes it is set save it in a Varible
+        $ModuleID = $_GET['mid'];
+
+        //Now we need to get the data from that module.
+        $moduleinfoquery = mysql_query("SELECT * FROM Modules WHERE ID = '$ModuleID' ");							
+        if($moduleinfoquery)
+        {
+            //Get all the Info for that module
+            $moduleinfo = mysql_fetch_array($moduleinfoquery);
+
+
+                //Make a unique number for Quiz ID
+                //Make a Unique code for the modules
+                $uniquecode = uniqid(Quiz);
+                //$uniquecode = "test";
+
+                //As a precuastion check the code is not already in use. 
+                $codeCheck = mysql_query("SELECT * FROM Quizzes WHERE ID = '$uniquecode' ");
+                $codenumrows = mysql_num_rows($codeCheck);
+
+                if ($codenumrows <= 1 )
+                {
+                    //Correct end while loop
+                    $codetrue = TRUE;
+                }
+                else
+                {
+                    echo $codenumrows;
+                    echo "Failed";                    
+                }
+        }
+        else
+        {
+	        die('Error: ' . mysql_error());
+        }
+    }
+    else
+    {
+        //Nope an ID has not been Set as a result sent them back to the module page. 
+        header ('Location: Modules.php');
+    }
 }
 
-//Now we need to get the data from that module.
-$moduleinfoquery = mysql_query("SELECT * FROM Modules WHERE ID = '$ModuleID' ");							
-if($moduleinfoquery)
-{
-	$moduleinfo = mysql_fetch_array($moduleinfoquery);
-}
-else
-{
-	die('Error: ' . mysql_error());
-}
 
 ?>
 
@@ -113,8 +192,23 @@ else
             <?php
                 echo $moduleinfo['Name'];
             ?>
+            First we need you to give your quiz a name.
         </p>
-        <p>Form and info goes here!</p>
+        <p>
+        <?php
+            echo $uniquecode;
+            echo $username;
+        ?>
+        </p>
+        <!--Form to go here. -->
+        <form method="post" onsubmit="validateForm(this);" class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="quizName" name="quizName" data-content="Please enter The Name" placeholder="Quiz Name">
+            <input type="hidden"  id="quizID" name="quizID" value="<?php echo $uniquecode; ?>">
+            <input type="hidden"  id="tutID" name="tutID" value="<?php echo $username; ?>">
+            <input type="hidden"  id="modID" name="modID" value="<?php echo $ModuleID; ?>">
+            <button class="btn btn-large btn-primary" type="submit" name="submit" id="submit">Make Quiz</button>
+        </form>
+
 
       </div>
     </div>
