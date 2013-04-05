@@ -125,7 +125,8 @@ else
             Here you can edit the quiz and add questions.
         </p>
         <?php
-            echo "<p>" . 
+            echo "<p>Quiz Name: " . $quizinfo['Name'] . "</p>\n";
+
         ?>
 
 
