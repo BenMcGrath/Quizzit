@@ -89,8 +89,6 @@
             <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
           </form>
         </div>
-      <script src="http://code.jquery.com/jquery.js"></script>
-      <script src="assets/js/bootstrap.js"></script>
       <script src="assets/js/jquery.js"></script>
       <script src="assets/js/bootstrap-transition.js"></script>
       <script src="assets/js/bootstrap-alert.js"></script>

@@ -83,8 +83,6 @@ if (isset($_SESSION['username']))
         <p>One day three princes road to a castles to save the princess from the evil dragon cox.</p>
     </div>
     </div>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>

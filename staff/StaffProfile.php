@@ -96,8 +96,6 @@ $uniName = mysql_fetch_array($uniNameQuery);
         <p>To create a new quiz, you will need to go to the modules page, select a module, and then create a new quiz relating to that module</p>
       </div>
     </div>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>

@@ -161,8 +161,6 @@
 
       </div>
     </div>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
