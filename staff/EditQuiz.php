@@ -121,7 +121,14 @@ else
                 echo $quizinfo['Name'];
             ?>
         </h1>
-        <p></p>
+        <p>
+            Here you can edit the quiz and add questions.
+        </p>
+        <?php
+            echo "<p>" . 
+        ?>
+
+
 
 
       </div>
