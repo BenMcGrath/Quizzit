@@ -105,27 +105,27 @@
                     else 
                     {
                         ?>
-                        <table>
+                        <table class="table">
+                          <thead>
                             <tr>
-                                <td>
-                                    Quiz ID
-                                </td>
-                                <td>
-                                    Quiz Name
-                                </td>
-                                <td>
-                                    Live
-                                </td>
-                                <td>
-                                    Edit
-                                </td>
-                                <td>
-                                    Make live/Close
-                                </td>
-                                <td>
-                                    View Results
-                                </td>
+                              <th>Quiz ID</th>
+                              <th>Quiz Name</th>
+                              <th>Live</th>
+                              <th>Edit</th>
+                              <th>Make Live/Close</th>
+                              <th>View Results</th>
                             </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          </tbody>
             <?php
                         //We will do this with a while loop
                         while($Quizarray = mysql_fetch_array( $result ))
