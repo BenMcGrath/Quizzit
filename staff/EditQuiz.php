@@ -30,13 +30,17 @@ if(isset($_GET['qid']))
     //we need to get all the information about this Quiz.
     //get the Quiz ID
     $quizID = $_GET['qid'];
-    $quizinfo = mysql_query("SELECT * FROM Quizzes WHERE ID = '$quizID'");
-    if($quizinfo)
+    $quizinfoquery= mysql_query("SELECT * FROM Quizzes WHERE ID = '$quizID'");
+    if($quizinfoquery)
     {
         //the query worked now lets check the is a quiz with this ID
-        if(mysql_num_rows($quizinfo) == 0)
+        if(mysql_num_rows($quizinfoquery) == 0)
         {
             die("No Quiz with this ID");
+        }
+        else
+        {
+            $quizinfo = mysql_fetch_array($quizinfoquery);   
         }
         //no need for an else as we just need to run the page now.
     }
@@ -116,6 +120,7 @@ else
                 echo $quizinfo['Name'];
             ?>
         </h1>
+        <p></p>
 
 
       </div>
