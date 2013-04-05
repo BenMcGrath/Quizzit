@@ -89,7 +89,7 @@ if (isset($_SESSION['username']))
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="/assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
     <script src="assets/js/bootstrap-scrollspy.js"></script>
     <script src="assets/js/bootstrap-tab.js"></script>
     <script src="assets/js/bootstrap-tooltip.js"></script>
@@ -112,6 +112,7 @@ if (isset($_SESSION['username']))
 	?>
 	<html>
 	<head>
+	<meta charset="utf-8">
     <title>Home &middot; QuizzIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -183,6 +184,9 @@ if (isset($_SESSION['username']))
     <script src="/assets/js/bootstrap-collapse.js"></script>
     <script src="/assets/js/bootstrap-carousel.js"></script>
     <script src="/assets/js/bootstrap-typeahead.js"></script>
+    <script>
+        $('.dropdown-toggle').dropdown()
+    </script>
 	</body>
 	</html>
 	<?php
