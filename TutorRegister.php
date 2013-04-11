@@ -293,7 +293,7 @@
             <input type="password" class="input-block-level required" name="confirmPassword" id="confirmPassword" required="required" rel="popover" data-content="The passwords do not match" placeholder="Confirm Password">
             <p>A validation email will be sent to the email address you provide. This is required to activate your account.</p>
             <button class="btn btn-large btn-primary" name="submit" id="submit" type="submit">Register</button>
-            <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
+            <a href="Default.php" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
           </form>
         </div>
     <script src="assets/js/jquery.js"></script>
@@ -441,7 +441,7 @@
             <input type="password" class="input-block-level required" name="confirmPassword" id="confirmPassword" required="required" rel="popover" data-content="The passwords do not match" placeholder="Confirm Password">
             <p>A validation email will be sent to the email address you provide. This is required to activate your account.</p>
             <button class="btn btn-large btn-primary" name="submit" id="submit" type="submit">Register</button>
-            <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
+            <a href="Default.php" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
           </form>
         </div>
     <script src="assets/js/jquery.js"></script>
