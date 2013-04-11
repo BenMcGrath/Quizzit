@@ -200,5 +200,8 @@ $uniName = mysql_fetch_array($uniNameQuery);
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script>
+        $('.dropdown-toggle').dropdown()
+    </script>
   </body>
 </html>
