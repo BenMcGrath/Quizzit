@@ -161,7 +161,7 @@ if (isset($_SESSION['username']))
         <p>Please select the button relevant to you below, staff or student.</p>
         <a href="LoginGUI.php" class="btn btn-large btn-primary">Staff</a>
         <br>
-        <a href="StudentcodeGUI.php" style ="margin-left: 5px;" class="btn btn-large">Student</a>
+        <a href="StudentcodeGUI.php" style="margin-left: 5px;" class="btn btn-large">Student</a>
         <br><br>
         <h2>Staff registration</h2>
         <p>If you are a 'first-time visiting' staff member, you will need to create an account on this system.</p>
