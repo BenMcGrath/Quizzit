@@ -947,6 +947,10 @@
   .carousel-caption {
     position: static;
   }
+.hero-unit {
+  padding: 10px;
+
+}
 }
 
 @media (max-width: 979px) {
