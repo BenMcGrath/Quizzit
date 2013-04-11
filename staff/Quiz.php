@@ -117,7 +117,7 @@
                               <th>View Results</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <!--<tbody>
                             <tr>
                               <td></td>
                               <td></td>
@@ -126,7 +126,7 @@
                               <td></td>
                               <td></td>
                             </tr>
-                          </tbody>
+                          </tbody>-->
             <?php
                         //We will do this with a while loop
                         while($Quizarray = mysql_fetch_array( $result ))

@@ -126,7 +126,80 @@ else
         </p>
         <?php
             echo "<p>Quiz Name: " . $quizinfo['Name'] . "</p>\n";
+            echo "<p>Module: " . $quizinfo['Module_ID'] . "</p>\n";
+            //need to show questions already in the system or not. 
+            //max of 15 questiosn but once hit the last one stop running. 
 
+            //first need to have somethign to work out what the question we are on this is also need for the query.
+            $ques_num = 1;
+
+        ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Q_Num
+                    </th>
+                    <th>
+                        Question
+                    </th>
+                    <th>
+                        Option 1
+                    </th>
+                    <th>
+                        Option 2
+                    </th>
+                    <th>
+                        Option 3
+                    </th>
+                    <th>
+                        Option 4
+                    </th>
+                    <th>
+                        Correct Option
+                    </th>
+                </tr>
+            </thead>
+
+          
+             <?php
+
+            //now the while loop as it is 15 question we want it to stop at at 15
+            while($ques_num < 16)
+            {
+                //Need to make the Id for the query each time.
+                $Q_ID = "Q" . $ques_num . "_ID";
+
+                //now we have the ID need to Check there a code in there.
+                if($quizinfo['$Q_ID'] == "")
+                {
+                    //there is no question from this point need to end. 
+                    break;
+                }
+                else
+                {
+
+                    $ques_num++;
+                }
+              
+            }
+        ?>
+        </table>
+        <?php
+            if($ques_num = 1)
+            {
+                echo "<p>This quiz has no questions</p>";
+            }
+
+            //If there was not 15 questions give a link to add more.
+            if($ques_num < 15)
+            {
+                //give them a link.
+                //need to pass TWO varibles
+                //1. The Quiz ID
+                //2. The Question number it will be
+                echo "<a href=\"AddQuestion.php?ques_num=" . $ques_num . "&Quiz_ID=" . $quizinfo['ID'] . "\">Add a question</a>";
+            }
         ?>
 
 
