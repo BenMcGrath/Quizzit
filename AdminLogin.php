@@ -86,7 +86,7 @@
             <input type="text" class="input-block-level required" required="required" rel="popover" id="username" name="username" data-content="Please enter your ID" placeholder="Tutor ID">
             <input type="password" class="input-block-level required" required="required" rel="popover" id="password" name="password" data-content="Please enter your password" placeholder="Password">
             <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-            <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
+            <a href="Default.php" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
           </form>
         </div>
     <script src="assets/js/jquery.js"></script>

@@ -74,7 +74,7 @@
             <h2 class="form-signin-heading">Student code entry</h2>
             <input type="text" class="input-block-level required" required="required" rel="popover" data-content="Please enter the quiz code provided" placeholder="Given quiz code">
             <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-            <a href="Default.html" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
+            <a href="Default.php" style="margin-left: 5px;" class="btn btn-large">Back to HomePage</a>
           </form>
         </div>
     <script src="assets/js/jquery.js"></script>
