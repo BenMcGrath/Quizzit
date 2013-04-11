@@ -61,7 +61,7 @@ if (isset($_SESSION['username']))
               <li><a href="Default.php">Home</a></li>
               <li class="active"><a href="About.php">About</a></li>
               <li><a href="Contact.php">Contact</a></li>
-              <li><a href="tutorial.php">Tutorial</a></li>
+              <li><a href="Tutorial.php">Tutorial</a></li>
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username; ?><b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -151,7 +151,7 @@ if (isset($_SESSION['username']))
               <li><a href="Default.php">Home</a></li>
               <li class="active"><a href="About.php">About</a></li>
               <li><a href="Contact.php">Contact</a></li>
-              <li><a href="tutorial.php">Tutorial</a></li>
+              <li><a href="Tutorial.php">Tutorial</a></li>
               <li><a href="AdminLogin.php">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->

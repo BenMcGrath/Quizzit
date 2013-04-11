@@ -73,7 +73,7 @@
               <li><a href="Default.html">Home</a></li>
               <li><a href="About.html">About</a></li>
               <li><a href="Contact.html">Contact</a></li>
-              <li><a href="tutorial.html">Tutorial</a></li>
+              <li><a href="Tutorial.html">Tutorial</a></li>
               <li><a href="AdminLogin.html">Admin</a></li>
             </ul>
           </div><!--/.nav-collapse -->
