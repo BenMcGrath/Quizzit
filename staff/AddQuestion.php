@@ -1,5 +1,5 @@
 <?php
-//In this file will Allow a certain Quiz to be editied and more questions added to it. 
+//In this file will allow questiosn to be added.
 session_start();
 //Need to get the Session ID 
 if (!isset($_SESSION['username']))
@@ -24,37 +24,22 @@ $tutUniID = $tutDetails['Universities'];
 $uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
 $uniName = mysql_fetch_array($uniNameQuery);
 
-if(isset($_GET['qid']))
+//need to check the two varibles have been set.
+if(isset($_GET['Quiz_ID']) && isset($_GET['ques_num']))
 {
-    //They should be on this pages lets keep going.
-    //we need to get all the information about this Quiz.
-    //get the Quiz ID
-    $quizID = $_GET['qid'];
-    $quizinfoquery= mysql_query("SELECT * FROM Quizzes WHERE ID = '$quizID'");
-    if($quizinfoquery)
-    {
-        //the query worked now lets check the is a quiz with this ID
-        if(mysql_num_rows($quizinfoquery) == 0)
-        {
-            die("No Quiz with this ID");
-        }
-        else
-        {
-            $quizinfo = mysql_fetch_array($quizinfoquery);   
-        }
-        //no need for an else as we just need to run the page now.
-    }
-    else
-    {
-        die("Query failed");
-    }
+    //Yes they are set so save them as we will need them when submitting to the database.
+    //Quiz ID
+    $Quiz_ID = $_GET['Quiz_ID'];
 
+    //Question Number
+    $Ques_num = $_GET['ques_num'];
 
 }
 else
 {
     //They shoudl not be on this page send them away!
     header ('Location: Quiz.php');
+
 }
 
 
@@ -116,91 +101,30 @@ else
 
     <div class="container">
       <div class="hero-unit">
-        <h1>Edit Quiz - 
-            <?php
-                echo $quizinfo['Name'];
-            ?>
+        <h1>Add Question
         </h1>
-        <p>
-            Here you can edit the quiz and add questions.
-        </p>
         <?php
-            echo "<p>Quiz Name: " . $quizinfo['Name'] . "</p>\n";
-            echo "<p>Module: " . $quizinfo['Module_ID'] . "</p>\n";
-            //need to show questions already in the system or not. 
-            //max of 15 questiosn but once hit the last one stop running. 
-
-            //first need to have somethign to work out what the question we are on this is also need for the query.
-            $ques_num = 1;
+            echo "<p>This will be Question Number " . $Ques_num . "</p>";
 
         ?>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Q_Num
-                    </th>
-                    <th>
-                        Question
-                    </th>
-                    <th>
-                        Option 1
-                    </th>
-                    <th>
-                        Option 2
-                    </th>
-                    <th>
-                        Option 3
-                    </th>
-                    <th>
-                        Option 4
-                    </th>
-                    <th>
-                        Correct Option
-                    </th>
-                </tr>
-            </thead>
-
-          
-             <?php
-
-            //now the while loop as it is 15 question we want it to stop at at 15
-            while($ques_num < 16)
-            {
-                //Need to make the Id for the query each time.
-                $Q_ID = "Q" . $ques_num . "_ID";
-
-                //now we have the ID need to Check there a code in there.
-                if($quizinfo['$Q_ID'] == "")
-                {
-                    //there is no question from this point need to end. 
-                    break;
-                }
-                else
-                {
-
-                    $ques_num++;
-                }
-              
-            }
-        ?>
-        </table>
-        <?php
-            if($ques_num = 1)
-            {
-                echo "<p>This quiz has no questions..yet</p>";
-            }
-
-            //If there was not 15 questions give a link to add more.
-            if($ques_num < 15)
-            {
-                //give them a link.
-                //need to pass TWO varibles
-                //1. The Quiz ID
-                //2. The Question number it will be
-                echo "<a href=\"AddQuestion.php?ques_num=" . $ques_num . "&Quiz_ID=" . $quizinfo['ID'] . "\">Add a question</a>";
-            }
-        ?>
+        <form method="post" onsubmit="validateForm(this);" class="form-signin" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden"  id="ques_num" name="ques_num" value="<?php echo $Ques_num; ?>">
+            <input type="hidden"  id="quiz_id" name="quiz_id" value="<?php echo $Quiz_ID; ?>">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="Question" name="Question" data-content="Please enter The Name" placeholder="Question">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="Option1" name="Option1" data-content="Please enter The Name" placeholder="Option 1">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="Option2" name="Option2" data-content="Please enter The Name" placeholder="Option 2">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="Option3" name="Option3" data-content="Please enter The Name" placeholder="Option 3">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="Option4" name="Option4" data-content="Please enter The Name" placeholder="Option 4">
+            <select name="correctanswer">
+                <option selected value="">Correct Answer</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+            </select>
+            <br/>
+            <button class="btn btn-large btn-primary" type="submit" name="submit" id="submit">Make Quiz</button>
+        </form>
 
 
 
