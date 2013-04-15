@@ -24,23 +24,85 @@ $tutUniID = $tutDetails['Universities'];
 $uniNameQuery =  mysql_query("SELECT * FROM Universities WHERE ID = '$tutUniID'");
 $uniName = mysql_fetch_array($uniNameQuery);
 
-//need to check the two varibles have been set.
-if(isset($_GET['Quiz_ID']) && isset($_GET['ques_num']))
+if(isset($_POST['submit']))
 {
-    //Yes they are set so save them as we will need them when submitting to the database.
-    //Quiz ID
-    $Quiz_ID = $_GET['Quiz_ID'];
+    //This means the form has been filled in
 
-    //Question Number
-    $Ques_num = $_GET['ques_num'];
+    //First lets make a Quesion ID number
+    $codetrue = FALSE;
+    $i = 1;
+
+    while($codetrue != TRUE)
+    {
+        //Make a Unique code for the modules
+        $uniquecode = uniqid(mod);
+
+        //As a precuastion check the code is not already in use. 
+        $codeCheck = mysql_query("SELECT * FROM Questions WHERE ID='".$uniquecode."' ");
+        $codenumrows = mysql_num_rows($codeCheck);
+        $i = $i++;
+
+        if ($codenumrows > 0)
+        {
+            //Not Correct re run the while
+        }
+        else
+        {
+            //Correct end while loop
+            $codetrue = TRUE;
+            echo $i;
+        }
+
+        if($n > 10)
+        {
+            echo "Something gone wrong!";
+            $codeCheck = TRUE;
+
+        }
+    } 
+    //Now we have a ID number Lets put this into the database
+
+    //first lets get all the Vairbles that would have been sent.
+
+    //question num
+    $_POST[''] = $argc;
+    //Quiz Id
+    $_POST[''] = $argc;
+    //Question
+    $_POST[''] = $argc;
+    //option1
+    $_POST[''] = $argc;
+    //option2
+    $_POST[''] = $argc;
+    //option3
+    $_POST[''] = $argc;
+    //option4
+    $_POST[''] = $argc;
+    //corectoption
+    $_POST[''] = $argc;
 
 }
 else
 {
-    //They shoudl not be on this page send them away!
-    header ('Location: Quiz.php');
+    //need to check the two varibles have been set.
+    if(isset($_GET['Quiz_ID']) && isset($_GET['ques_num']))
+    {
+        //Yes they are set so save them as we will need them when submitting to the database.
+        //Quiz ID
+        $Quiz_ID = $_GET['Quiz_ID'];
 
+        //Question Number
+        $Ques_num = $_GET['ques_num'];
+
+    }
+    else
+    {
+        //They shoudl not be on this page send them away!
+        header ('Location: Quiz.php');
+
+    }
 }
+
 
 
 ?>
