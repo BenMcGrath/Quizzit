@@ -35,7 +35,7 @@ if(isset($_POST['submit']))
     while($codetrue != TRUE)
     {
         //Make a Unique code for the modules
-        $uniquecode = uniqid(mod);
+        $uniquecode = uniqid(ques);
 
         //As a precuastion check the code is not already in use. 
         $codeCheck = mysql_query("SELECT * FROM Questions WHERE ID='".$uniquecode."' ");
@@ -50,7 +50,6 @@ if(isset($_POST['submit']))
         {
             //Correct end while loop
             $codetrue = TRUE;
-            echo $i;
         }
 
         if($n > 10)
@@ -65,21 +64,37 @@ if(isset($_POST['submit']))
     //first lets get all the Vairbles that would have been sent.
 
     //question num
-    $_POST[''] = $argc;
+    $Ques_num = $_POST['ques_num'];
     //Quiz Id
-    $_POST[''] = $argc;
+    $Quiz_ID = $_POST['quiz_id'];
     //Question
-    $_POST[''] = $argc;
+    $Question = $_POST['Question'];
     //option1
-    $_POST[''] = $argc;
+    $Option1 = $_POST['Option1'];
     //option2
-    $_POST[''] = $argc;
+    $Option2 = $_POST['Option2'];
     //option3
-    $_POST[''] = $argc;
+    $Option3 = $_POST['Option3'];
     //option4
-    $_POST[''] = $argc;
+    $Option4 = $_POST['Option4'];
     //corectoption
-    $_POST[''] = $argc;
+    $CorrectAnswer = $_POST['correctanswer'];
+
+    //now we have the varibles we need to put them in the database
+    $QuesInsert = "INSERT INTO Questions (ID, Quiz_ID, Question, Option1, Option2, Option3, Option4, Answer) VALUES ('$uniquecode', '$Quiz_ID', '$Question', '$Option1', '$Option2', '$Option3', '$Option4', '$CorrectAnswer')";
+    if (!mysql_query($QuesInsert))
+    {
+        die('Error: ' . mysql_error());
+    }
+    //Now the question is added we need to add the question ID to the Quiz Informa row
+    //First make the string for the question
+    $Q_ID = "Q" . $Ques_num . "_ID";
+    $QuizUpdate = "UPDATE Quizzes SET ".$Q_ID."='$uniquecode' WHERE ID = '$Quiz_ID' ";
+    //echo $QuizUpdate;
+    if (!mysql_query($QuizUpdate))
+    {
+        die('Error: ' . mysql_error());
+    }
 
 }
 else
