@@ -168,17 +168,38 @@ else
             while($ques_num < 16)
             {
                 //Need to make the Id for the query each time.
-                $Q_ID = "Q" . $ques_num . "_ID";
-
+                $questionID = $quizinfo['Q' . $ques_num . '_ID'];
                 //now we have the ID need to Check there a code in there.
-                if($quizinfo['$Q_ID'] == "")
+                if($questionID == "")
                 {
                     //there is no question from this point need to end. 
                     break;
                 }
                 else
                 {
+                    //Need to get the Question Information
+                    $QuestInfo = mysql_query("SELECT * FROM Questions Where ID = '$questionID'");
+                    
+                    //$quesinfo = mysql_fetch_array($QuestInfo);
+                    if($questionarray == mysql_fetch_array($QuestInfo))
+                    {
+                        //It worked
+                        //Now show the data of the question in the table.
+                        echo "<td>".$ques_num. " </td>\n";
+                        echo "<td>".$QuestInfo['Question']. " </td>\n";
+                        echo "<td>".$QuestInfo['Option1']. " </td>\n";
+                        echo "<td>".$QuestInfo['Option2']. " </td>\n";
+                        echo "<td>".$QuestInfo['Option3']. " </td>\n";
+                        echo "<td>".$QuestInfo['Option4']. " </td>\n";
+                    }
+                    else
+                    {
+                        //It failed
+                        echo $questionID;
+                        //die("Query failed");
+                    }
 
+                    //Need to show the Question in the table
                     $ques_num++;
                 }
               
