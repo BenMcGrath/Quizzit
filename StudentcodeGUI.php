@@ -70,9 +70,9 @@
       </div>
     </div>
         <div class="container">
-          <form method="GET" onsubmit="validateForm(this);" class="form-signin">
+          <form method="GET" onsubmit="validateForm(this);" class="form-signin" action="Answer.php">
             <h2 class="form-signin-heading">Student code entry</h2>
-            <input type="text" class="input-block-level required" required="required" rel="popover" data-content="Please enter the quiz code provided" placeholder="Given quiz code">
+            <input type="text" class="input-block-level required" required="required" rel="popover" id="quizcode" name="quizcode" data-content="Please enter the quiz code provided" placeholder="Given quiz code">
             <button class="btn btn-large btn-primary" type="submit">Start Quiz</button>
           </form>
         </div>

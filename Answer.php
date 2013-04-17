@@ -17,7 +17,57 @@
 
     //first checkdate the quiz code hash been sent by GET
 
+    if (isset($_GET['quizcode']))
+    {
+        //The GET method sent this as a result need the first question
 
+        //get quiz ID
+        $quizID = $_GET['quizcode'];
+        //First Get the Quiz info.
+
+        $quizinfoquery= mysql_query("SELECT * FROM Quizzes WHERE ID = '$quizID'");
+        if($quizinfoquery)
+        {
+        //the query worked now lets check the is a quiz with this ID
+        if(mysql_num_rows($quizinfoquery) == 0)
+        {
+            //There no Quiz with this ID
+            //Let get rid of them.
+            header('Location: StudentcodeGUI.php');
+        }
+        else
+        {
+            //Right get the Quiz Information.
+            $quizinfo = mysql_fetch_array($quizinfoquery);   
+        }
+
+        //Now we have the quiz info let get a question
+
+        //As this is the first question we need the first question
+
+
+        //Run page
+    }
+    else if(isset($_POST['quizcode']))
+    {
+        //The POST method sent this as a result second question needed
+        //OR if no questiosn left need to say good bye :)
+
+        //First get question info
+
+        //Get the Question they are on.
+
+        //If no questions left end quiz
+
+        //If there is a question show question.
+
+
+    }
+    else
+    {
+        //Nothing been sent should not be here.
+        header('Location: StudentcodeGUI.php');
+    }
 
 
 
