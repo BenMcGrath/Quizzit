@@ -70,11 +70,10 @@
       </div>
     </div>
         <div class="container">
-          <form method="POST" onsubmit="validateForm(this);" class="form-signin">
+          <form method="GET" onsubmit="validateForm(this);" class="form-signin">
             <h2 class="form-signin-heading">Student code entry</h2>
             <input type="text" class="input-block-level required" required="required" rel="popover" data-content="Please enter the quiz code provided" placeholder="Given quiz code">
-            <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-            <a href="Default.php" style="margin-left: 5px;" class="btn btn-large">HomePage</a>
+            <button class="btn btn-large btn-primary" type="submit">Start Quiz</button>
           </form>
         </div>
     <script src="assets/js/jquery.js"></script>
