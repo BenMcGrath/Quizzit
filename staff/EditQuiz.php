@@ -165,7 +165,7 @@ else
              <?php
 
             //now the while loop as it is 15 question we want it to stop at at 15
-            while($ques_num < 16)
+            while($ques_num <= 16)
             {
                 //Need to make the Id for the query each time.
                 $questionID = $quizinfo['Q' . $ques_num . '_ID'];
@@ -178,38 +178,47 @@ else
                 else
                 {
                     //Need to get the Question Information
-                    $QuestInfo = mysql_query("SELECT * FROM Questions Where ID = '$questionID'");
+                    $Questquery = "SELECT * FROM Questions Where ID = '$questionID'";
+                    $Questarray = mysql_query($Questquery);
                     
                     //$quesinfo = mysql_fetch_array($QuestInfo);
-                    if($questionarray == mysql_fetch_array($QuestInfo))
+                    //
+                    if($Questarray)
                     {
+
+                        $row = mysql_fetch_array($Questarray);
                         //It worked
                         //Now show the data of the question in the table.
-                        echo "<td>".$ques_num. " </td>\n";
-                        echo "<td>".$QuestInfo['Question']. " </td>\n";
-                        echo "<td>".$QuestInfo['Option1']. " </td>\n";
-                        echo "<td>".$QuestInfo['Option2']. " </td>\n";
-                        echo "<td>".$QuestInfo['Option3']. " </td>\n";
-                        echo "<td>".$QuestInfo['Option4']. " </td>\n";
+                        echo "<td>". $ques_num . "</td>\n";
+                        echo "<td>". $row['Question'] . "</td>\n";
+                        echo "<td>". $row['Option1'] . "</td>\n";
+                        echo "<td>". $row['Option2'] . "</td>\n";
+                        echo "<td>". $row['Option3'] . "</td>\n";
+                        echo "<td>". $row['Option4'] . "</td>\n";
+                        echo "<td>". $row['Answer'] . "</td>\n";
+                        
                     }
                     else
                     {
                         //It failed
                         echo $questionID;
-                        //die("Query failed");
+                        die("Query failed");
                     }
 
                     //Need to show the Question in the table
-                    $ques_num++;
+                    ++$ques_num;
+                        
                 }
               
             }
         ?>
         </table>
         <?php
-            if($ques_num = 1)
+            
+            if($ques_num == 1)
             {
                 echo "<p>This quiz has no questions..yet</p>";
+                echo $ques_num;
             }
 
             //If there was not 15 questions give a link to add more.
