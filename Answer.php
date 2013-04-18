@@ -67,14 +67,78 @@
             //Run page
         }
     }
-    else if(isset($_POST['quizcode']))
+    else if(isset($_POST['quiz_id']))
     {
         //The POST method sent this as a result second question needed
+
         //OR if no questiosn left need to say good bye :)
-        //First get question info
+        //First get quizid
+        $quizID = $_POST['quiz_id'];
+        //get the question id
+        $questionID = $_POST['ques_code'];
         //Get the Question they are on.
-        //If no questions left end quiz
-        //If there is a question show question.
+        $ques_num = $_POST['ques_num'];
+
+        //Now need to take the result and put it in the database
+        $studentanswer = $_POST['Option'];
+        //Query
+        $addquestionquery = "INSERT INTO Student_Answers (Question_ID, Student_Answer) VALUES ('$questionID', '$studentanswer')";
+        //Now add it to the database
+        if (!mysql_query($addquestionquery))
+        {
+            die('Error: ' . mysql_error());
+        }
+
+
+        //Then increase it by one
+        ++$ques_num;
+        //Now lets run the same code and get the next question If no question END the quiz
+        $quizinfoquery= mysql_query("SELECT * FROM Quizzes WHERE ID = '$quizID'");
+        if($quizinfoquery)
+        {
+            //the query worked now lets check the is a quiz with this ID
+            if(mysql_num_rows($quizinfoquery) == 0)
+            {
+                //There no Quiz with this ID
+                //Let get rid of them.
+                header('Location: StudentcodeGUI.php');
+            }
+            else
+            {
+                //Right get the Quiz Information.
+                $quizinfo = mysql_fetch_array($quizinfoquery);   
+            }
+            //Now we have the quiz info let get a question
+            //As this is the first question we need the first question
+            $questionID = $quizinfo['Q'.$ques_num.'_ID'];
+            //now we have the ID need to Check there a code in there.
+            if($questionID == "")
+            {
+                //No questions?
+                //Bye Bye
+                //Need to add a question finsihed page?
+                header('Location: StudentcodeGUI.php');
+            }
+            else
+            {
+                //Need to get the Question Information
+                $Questquery = "SELECT * FROM Questions Where ID = '$questionID'";
+                $Questarray = mysql_query($Questquery);
+                    
+                //$quesinfo = mysql_fetch_array($QuestInfo);
+                //
+                if($Questarray)
+                {
+                    $question = mysql_fetch_array($Questarray);
+                    
+                }
+                else
+                {
+                    //It failed
+                    echo $questionID;
+                }                       
+            }
+        }
     }
     else
     {
@@ -135,7 +199,9 @@
                     echo "<p>".$question['Question']."</p>";
                 ?>
                 <form method="post" onsubmit="validateForm(this);" class="form-register" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
+                    <input type="hidden"  id="quiz_id" name="quiz_id" value="<?php echo $quizID; ?>">
+                    <input type="hidden"  id="ques_code" name="ques_code" value="<?php echo $questionID; ?>">
+                    <input type="hidden"  id="ques_num" name="ques_num" value="<?php echo $ques_num; ?>">
                     <?php
                         //need to add the code that shows all the univertsy in the system
                         //do it by a list format

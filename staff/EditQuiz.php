@@ -189,6 +189,7 @@ else
                         $row = mysql_fetch_array($Questarray);
                         //It worked
                         //Now show the data of the question in the table.
+                        echo "<tr>";
                         echo "<td>". $ques_num . "</td>\n";
                         echo "<td>". $row['Question'] . "</td>\n";
                         echo "<td>". $row['Option1'] . "</td>\n";
@@ -196,6 +197,7 @@ else
                         echo "<td>". $row['Option3'] . "</td>\n";
                         echo "<td>". $row['Option4'] . "</td>\n";
                         echo "<td>". $row['Answer'] . "</td>\n";
+                        echo "</tr>";
                         
                     }
                     else
@@ -218,7 +220,6 @@ else
             if($ques_num == 1)
             {
                 echo "<p>This quiz has no questions..yet</p>";
-                echo $ques_num;
             }
 
             //If there was not 15 questions give a link to add more.

@@ -95,6 +95,7 @@ if(isset($_POST['submit']))
     {
         die('Error: ' . mysql_error());
     }
+        header ('Location: EditQuiz.php?qid='.$Quiz_ID.'');
 
 }
 else
@@ -113,7 +114,7 @@ else
     else
     {
         //They shoudl not be on this page send them away!
-        header ('Location: Quiz.php');
+    header ('Location: Quiz.php');
 
     }
 }
