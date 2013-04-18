@@ -129,13 +129,10 @@
 
 
                 $universities = mysql_query("SELECT * FROM Universities ORDER BY Name");
-                    
                 while( $myArray = mysql_fetch_array( $universities ) )
                 {
                     echo "<option value=\"". $myArray['ID'] . "\">" . $myArray['Name'] . "</option> \r\n"  ;
                 }
-                //<input type="text" class="input-block-level required" name="university" id="university" required="required" rel"popover" data-content="Please enter your university" placeholder="University">
-
             ?>
             </select>
             <input type="password" class="input-block-level required" name="password" id="password" required="required" rel="popover" data-content="Please enter a password" placeholder="Password">
