@@ -138,7 +138,105 @@ else
             padding-top: 60px;
         }
     </style>
+      <script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="jquery-migrate-1.0.0.js" type="text/javascript"></script>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+      <script>
+        $(function () 
+        {
+            // On document ready, call visualize on the datatable.
+            $(document).ready(function () 
+            {
+                /**
+                * Visualize an HTML table using Highcharts. The top (horizontal) header
+                * is used for series names, and the left (vertical) header is used
+                * for category names. This function is based on jQuery.
+                * @param {Object} table The reference to the HTML table to visualize
+                * @param {Object} options Highcharts options
+                */
+                Highcharts.visualize = function (table, options) 
+                {
+                    // the categories
+                    options.xAxis.categories = [];
+                    $('tbody th', table).each(function (i) 
+                    {
+                        options.xAxis.categories.push(this.innerHTML);
+                    });
+
+                    // the data series
+                    options.series = [];
+                    $('tr', table).each(function (i) 
+                    {
+                        var tr = this;
+                        $('th, td', tr).each(function (j) 
+                        {
+                            if (j > 0) { // skip first column
+                                if (i == 0) 
+                                { // get the name and init the series
+                                    options.series[j - 1] = 
+                                    {
+                                        name: this.innerHTML,
+                                        data: []
+                                    };
+                                }
+                                else 
+                                { // add values
+                                    options.series[j - 1].data.push(parseFloat(this.innerHTML));
+                                }
+                            }
+                        });
+                    });
+
+                    var chart = new Highcharts.Chart(options);
+                }
+				
+
+                var table = document.getElementById('datatable'),
+        options = {
+            chart: {
+                renderTo: 'container',
+                type: 'pie'
+            },
+            title: {
+                text: 'Data extracted from a HTML table in the page'
+            },
+            xAxis: {
+        },
+        yAxis: {
+            title: {
+                text: 'Units'
+            }
+        },
+        tooltip: 
+       {
+            formatter: function() 
+           {
+               return '<b>'+ this.series.name +'</b><br/>'+
+                  this.y +' '+ this.point.name;
+            }
+       },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    formatter: function () {
+                        return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+                    }
+                }
+            }
+        }
+    };
+
+                Highcharts.visualize(table, options);
+            });
+
+        });
+
+    </script>
   </head>
 
   <body>
@@ -176,28 +274,31 @@ else
       <div class="hero-unit">
         <h1>View Results - <?php echo $row['Question'];?>
         </h1>
-        <table class="table">
+        <table id="datatable" class="table">
             <tr>
                 <th>Option</th>
                 <th>Answers</th>
             </tr>
             <tr>
-                <td><?php echo $row['Option1'];?></td>
+                <th><?php echo $row['Option1'];?></th>
                 <td><?php echo $option1;?></td>
             </tr>
             <tr>
-                <td><?php echo $row['Option2'];?></td>
+                <th><?php echo $row['Option2'];?></th>
                 <td><?php echo $option2;?></td>
             </tr>
             <tr>
-                <td><?php echo $row['Option3'];?></td>
+                <th><?php echo $row['Option3'];?></th>
                 <td><?php echo $option3;?></td>
             </tr>
             <tr>
-                <td><?php echo $row['Option4'];?></td>
+                <th><?php echo $row['Option4'];?></th>
                 <td><?php echo $option4;?></td>
             </tr>
         </table>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+          <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
       </div>
     </div>
     <script src="../assets/js/jquery.js"></script>
